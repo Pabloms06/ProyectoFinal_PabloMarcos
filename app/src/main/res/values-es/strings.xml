@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="send">Enviar</string>
+    <string name="decade">"Seleccione decada: "</string>
+    <string name="genere">Seleccione genero:</string>
+</resources>
