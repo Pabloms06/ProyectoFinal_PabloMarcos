@@ -3,7 +3,7 @@ package com.cbellmont.ejemplodescargainternet
 import com.google.gson.annotations.SerializedName
 
 data class MusicModel(
-    var title: String,
+
     @SerializedName("id")var Id : String,
     @SerializedName("decada")var decada: Int,
     @SerializedName("genero") val genero : String,
