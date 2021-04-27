@@ -1,63 +1,41 @@
 package com.example.proyectofinal_pablomarcos
 
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.cbellmont.ejemplodescargainternet.MusicModel
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import okhttp3.*
-import org.json.JSONObject
-import java.io.IOException
+import com.example.proyectofinal_pablomarcos.databinding.ActivityMain2Binding
+import com.example.proyectofinal_pablomarcos.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
 
-class MainActivity2 {
+interface MainActivityInterface {
+    suspend fun onMusicReceived(listFilms : List<MusicModel>)
+}
 
-    companion object {
-        const val PARAM1 = "datos"
-    }
+class MainActivity2 : AppCompatActivity(), MainActivityInterface {
 
-    class GetAllMusic {
-        companion object {
-            suspend fun send(mainActivity : MainActivityInterface?) {
+    private lateinit var binding: ActivityMain2Binding
 
-                val client = OkHttpClient()
-                val url = "http://localhost:3000/musica"
-                val request = Request.Builder()
-                    .url(url)
-                    .build()
-                val call = client.newCall(request)
-                call.enqueue(object : Callback {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.music_layout)
 
-                    override fun onFailure(call: Call, e: IOException) {
-                        e.printStackTrace()
-                        Log.e("GetAllFilms", call.toString())
+        val binding = ActivityMain2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-                    }
-
-                    override fun onResponse(call: Call, response: Response) {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            val bodyInString = response.body?.string()
-                            bodyInString?.let {
-                                Log.w("GetAllFilms", bodyInString)
-                                val JsonObject = JSONObject(bodyInString)
-
-                                val results = JsonObject.optJSONArray("results")
-                                results?.let {
-                                    Log.w("GetAllFilms", results.toString())
-                                    val gson = Gson()
-
-                                    val itemType = object : TypeToken<List<MusicModel>>() {}.type
-
-                                    val list = gson.fromJson<List<MusicModel>>(results.toString(), itemType)
-
-                                    mainActivity?.onFilmsReceived(list)
-                                }
-                            }
-                        }
-                    }
-                })
-            }
+        lifecycleScope.launch(Dispatchers.IO){
+            GetAllMusic.send(this@MainActivity2)
         }
     }
+
+    override suspend fun onMusicReceived(listFilms : List<MusicModel>) {
+        withContext(Dispatchers.Main){
+            binding.vista
+            listFilms.forEach {
+                binding..append(it.toString())
+            }
+        }
+
+    }
+
 }

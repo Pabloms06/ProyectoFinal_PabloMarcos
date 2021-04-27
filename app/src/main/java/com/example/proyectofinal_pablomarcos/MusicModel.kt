@@ -12,7 +12,7 @@ data class MusicModel(
     @SerializedName("descripcion") var descripcion : String,
     @SerializedName("anio") var anio : String,
     @SerializedName("cancion") var cancion : String,
-    @SerializedName("integrantes")var integrantes: List<String>?
+    @SerializedName("integrantes")var integrantes: List<String>?)
 {
 
     override fun toString(): String {
