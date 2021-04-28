@@ -2,40 +2,97 @@ package com.example.proyectofinal_pablomarcos
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.cbellmont.ejemplodescargainternet.MusicModel
-import com.example.proyectofinal_pablomarcos.databinding.ActivityMain2Binding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.cbellmont.ejercicioadapterstarwars.databinding.ActivityMainBinding
 import com.example.proyectofinal_pablomarcos.databinding.ActivityMainBinding
-import kotlinx.coroutines.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-interface MainActivityInterface {
-    suspend fun onMusicReceived(listFilms : List<MusicModel>)
-}
-
-class MainActivity2 : AppCompatActivity(), MainActivityInterface {
-
-    private lateinit var binding: ActivityMain2Binding
+class MainActivity : AppCompatActivity() {
+    private var adapter : MusicAdapter = MusicAdapter()
+    private lateinit var model :MainActivityViewModel
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.music_layout)
-
-        val binding = ActivityMain2Binding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        lifecycleScope.launch(Dispatchers.IO){
-            GetAllMusic.send(this@MainActivity2)
+        model = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        createRecyclerView()
+        downloadAll()
+
+        binding.bAntiguas.setOnClickListener {
+            binding.pbLoading.visibility = View.VISIBLE
+            downloadOldFilm()
+        }
+
+        binding.bNuevas.setOnClickListener {
+            binding.pbLoading.visibility = View.VISIBLE
+            downloadNewFilm()
+        }
+
+        binding.bTodas.setOnClickListener {
+            binding.pbLoading.visibility = View.VISIBLE
+            downloadAll()
         }
     }
 
-    override suspend fun onMusicReceived(listFilms : List<MusicModel>) {
-        withContext(Dispatchers.Main){
-            binding.vista
-            listFilms.forEach {
-                binding..append(it.toString())
-            }
-        }
-
+    private fun createRecyclerView() {
+        binding.filmRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.filmRecyclerView.adapter = adapter
     }
 
+    private fun downloadOldFilm(){
+        lifecycleScope.launch {
+            val list = loadFilmOldInBackground()
+            setAdapterOnMainThread(list)
+        }
+    }
+    private suspend fun loadFilmOldInBackground() : MutableList<MusicAdapter>{
+        // El withContext(Dispatchers.IO) no es estrictamente necesario. Lo ponemos solo por seguridad.
+        return withContext(Dispatchers.IO) {
+            return@withContext model.getOldFilms()
+        }
+    }
+
+    private fun downloadNewFilm(){
+        lifecycleScope.launch {
+            val list = loadFilmNewInBackground()
+            setAdapterOnMainThread(list)
+        }
+    }
+    private suspend fun loadFilmNewInBackground() : MutableList<MusicAdapter>{
+        // El withContext(Dispatchers.IO) no es estrictamente necesario. Lo ponemos solo por seguridad.
+        return withContext(Dispatchers.IO) {
+            return@withContext model.getNewFilms()
+        }
+    }
+
+    private fun downloadAll(){
+        lifecycleScope.launch {
+            val list = loadFilmAllInBackground()
+            setAdapterOnMainThread(list)
+        }
+    }
+
+    private suspend fun loadFilmAllInBackground() : MutableList<MusicAdapter>{
+        // El withContext(Dispatchers.IO) no es estrictamente necesario. Lo ponemos solo por seguridad.
+        return withContext(Dispatchers.IO) {
+            return@withContext model.getFilms()
+        }
+    }
+
+    private suspend fun setAdapterOnMainThread(filmsList: MutableList<MusicAdapter>) {
+        withContext(Dispatchers.Main) {
+            adapter.updateFilms(filmsList)
+            pbLoading.visibility = View.GONE
+        }
+    }
 }
