@@ -16,7 +16,7 @@ class GetAllMusic {
 
     companion object {
 
-        suspend fun send(mainActivityMain2Binding: MainActivity2) {
+        fun send(mainActivityMain2Binding: MainActivity2) {
 
             val client = OkHttpClient()
             val url = "http://localhost:3000/musica"
@@ -49,7 +49,7 @@ class GetAllMusic {
                                 val list =
                                     gson.fromJson<List<MusicModel>>(results.toString(), itemType)
 
-                                mainActivityMain2Binding?.onMusicReceived(list)
+                                mainActivityMain2Binding?.setAdapterOnMainThread()
                             }
                         }
                     }

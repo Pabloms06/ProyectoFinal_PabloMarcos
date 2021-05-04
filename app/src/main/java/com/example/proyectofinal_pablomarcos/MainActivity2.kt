@@ -6,15 +6,18 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cbellmont.ejercicioadapterstarwars.databinding.ActivityMainBinding
 import com.example.proyectofinal_pablomarcos.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.android.synthetic.main.activity_main_2.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivity : AppCompatActivity() {
+class MainActivity2 : AppCompatActivity() {
+    companion object {
+        const val PARAM1 = "datos"
+        const val PARAM2 = "datos"
+    }
     private var adapter : MusicAdapter = MusicAdapter()
     private lateinit var model :MainActivityViewModel
     private lateinit var binding: ActivityMainBinding
@@ -45,8 +48,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createRecyclerView() {
-        binding.filmRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.filmRecyclerView.adapter = adapter
+        binding.vista = LinearLayoutManager(this)
+        binding.vista.adapter = adapter
     }
 
     private fun downloadOldFilm(){
@@ -77,15 +80,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun downloadAll(){
         lifecycleScope.launch {
-            val list = loadFilmAllInBackground()
+            val list = loadMusicAllInBackground()
             setAdapterOnMainThread(list)
         }
     }
 
-    private suspend fun loadFilmAllInBackground() : MutableList<MusicAdapter>{
+    private suspend fun loadMusicAllInBackground() : MutableList<MusicAdapter>{
         // El withContext(Dispatchers.IO) no es estrictamente necesario. Lo ponemos solo por seguridad.
         return withContext(Dispatchers.IO) {
-            return@withContext model.getFilms()
+            return@withContext model.getMusic()
         }
     }
 
