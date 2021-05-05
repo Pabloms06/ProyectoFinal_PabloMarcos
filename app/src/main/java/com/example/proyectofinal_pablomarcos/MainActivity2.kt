@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cbellmont.ejemplodescargainternet.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main_2.*
@@ -13,13 +14,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+interface MainActivityInterface {
+    suspend fun onFilmsReceived(listMusic : List<MusicModel>)
+}
+
 class MainActivity2 : AppCompatActivity() {
     companion object {
         const val PARAM1 = "datos"
         const val PARAM2 = "datos"
     }
-    private var adapter : MusicAdapter = MusicAdapter()
-    private lateinit var model :MainActivityViewModel
+
+    private var adapter: MusicAdapter = MusicAdapter()
+    private lateinit var model: MainActivityViewModel
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,44 +54,46 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun createRecyclerView() {
-        binding.vista = LinearLayoutManager(this)
+        binding. = LinearLayoutManager(this)
         binding.vista.adapter = adapter
     }
 
-    private fun downloadOldFilm(){
+    private fun downloadOldFilm() {
         lifecycleScope.launch {
             val list = loadFilmOldInBackground()
             setAdapterOnMainThread(list)
         }
     }
-    private suspend fun loadFilmOldInBackground() : MutableList<MusicAdapter>{
+
+    private suspend fun loadFilmOldInBackground(): MutableList<MusicAdapter> {
         // El withContext(Dispatchers.IO) no es estrictamente necesario. Lo ponemos solo por seguridad.
         return withContext(Dispatchers.IO) {
             return@withContext model.getOldFilms()
         }
     }
 
-    private fun downloadNewFilm(){
+    private fun downloadNewFilm() {
         lifecycleScope.launch {
             val list = loadFilmNewInBackground()
             setAdapterOnMainThread(list)
         }
     }
-    private suspend fun loadFilmNewInBackground() : MutableList<MusicAdapter>{
+
+    private suspend fun loadFilmNewInBackground(): MutableList<MusicAdapter> {
         // El withContext(Dispatchers.IO) no es estrictamente necesario. Lo ponemos solo por seguridad.
         return withContext(Dispatchers.IO) {
             return@withContext model.getNewFilms()
         }
     }
 
-    private fun downloadAll(){
+    private fun downloadAll() {
         lifecycleScope.launch {
             val list = loadMusicAllInBackground()
             setAdapterOnMainThread(list)
         }
     }
 
-    private suspend fun loadMusicAllInBackground() : MutableList<MusicAdapter>{
+    private suspend fun loadMusicAllInBackground(): MutableList<MusicAdapter> {
         // El withContext(Dispatchers.IO) no es estrictamente necesario. Lo ponemos solo por seguridad.
         return withContext(Dispatchers.IO) {
             return@withContext model.getMusic()
@@ -98,4 +106,6 @@ class MainActivity2 : AppCompatActivity() {
             pbLoading.visibility = View.GONE
         }
     }
-}
+
+
+
