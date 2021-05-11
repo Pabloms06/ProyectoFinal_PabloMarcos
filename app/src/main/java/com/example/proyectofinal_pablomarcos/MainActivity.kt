@@ -1,8 +1,8 @@
 package com.example.proyectofinal_pablomarcos
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,14 +14,8 @@ class MainActivity : AppCompatActivity() {
         var mutableList : MutableList<String> = mutableListOf()
         val boton = findViewById<Button>(R.id.send)
 
-        boton.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            intent.putExtra(MainActivity2.PARAM1, mutableList.toString())
-            intent.putExtra(MainActivity2.PARAM2, mutableList1.toString())
-            startActivity(intent)
-        }
 
-        fun listadecada(){
+
             if (radioButton70.isChecked){
                 var setenta = radioButton70.text
                 mutableList1.add(setenta.toString())
@@ -43,11 +37,7 @@ class MainActivity : AppCompatActivity() {
                 mutableList1.add(dosmildiez.toString())
             }
 
-
-        }
-
-        fun listagenero(){
-            if (radioButtonrock.isChecked){
+        if (radioButtonrock.isChecked){
                 var rock = radioButtonrock.text
                 mutableList.add(rock.toString())
             }
@@ -69,8 +59,20 @@ class MainActivity : AppCompatActivity() {
             }
 
 
+
+
+
+        boton.setOnClickListener{
+            val intent = Intent(this, MainActivity2::class.java)
+            intent.putExtra("lista1",mutableList.toString())
+            intent.putExtra("lista2",mutableList1.toString())
+            startActivity(intent)
         }
+
+
+
 
     }
 }
+
 

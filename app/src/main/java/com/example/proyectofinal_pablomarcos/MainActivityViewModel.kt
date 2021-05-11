@@ -1,5 +1,6 @@
 package com.example.proyectofinal_pablomarcos
 
+import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cbellmont.ejemplodescargainternet.MusicModel
@@ -14,24 +15,14 @@ class MainActivityViewModel  : ViewModel() {
 
     private val music = mutableListOf<MusicModel>()
 
-    companion object {
-        const val PARAM1 = "datos"
-        const val PARAM2 = "datos"
-    }
-
-    suspend fun getGenero(): MutableList<MusicModel> {
+    suspend fun getResultados(): MutableList<MusicModel> {
         delay(2000)
-        return music.filterList { PARAM1 }}
+        return music
+
+        suspend fun getMusic(): MutableList<MusicModel> {
+            delay(2000)
+            return music.filterIndexedTo()
+        }
     }
 
-
-    suspend fun getDecada() : MutableList<MusicModel> {
-        delay(2000)
-        return music.subList(3,6)
-    }
-
-    suspend fun getGeneroDecada() : MutableList<MusicModel> {
-        delay(2000)
-        return
-    }
 }
