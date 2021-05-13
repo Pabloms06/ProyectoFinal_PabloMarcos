@@ -1,4 +1,4 @@
-package com.example.proyectofinal_pablomarcos
+ package com.example.proyectofinal_pablomarcos
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +9,9 @@ import com.example.proyectofinal_pablomarcos.databinding.FilmLayoutBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.cbellmont.ejemplodescargainternet.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.MusicLayoutBinding
+import com.squareup.picasso.Picasso
 
-class MusicAdapter : RecyclerView.Adapter<MusicAdapter.FilmsViewHolder>() {
+ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.FilmsViewHolder>() {
 
     lateinit var binding : MusicLayoutBinding
 
@@ -35,14 +36,14 @@ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.FilmsViewHolder>() {
     override fun onBindViewHolder(holder: FilmsViewHolder, position: Int) {
         holder.tvIntro.text = films[position].intro
         holder.tvNombre.text = films[position].name
-        if (position % 6 > 2){
+        if (position > 0){
             holder.ivIzquierda.visibility = View.GONE
             holder.ivDerecha.visibility = View.VISIBLE
             Picasso.get().load(films[position].getUrlImage()).into(holder.ivDerecha)
         }  else {
             holder.ivIzquierda.visibility = View.VISIBLE
             holder.ivDerecha.visibility = View.GONE
-            Picasso.get().load(films[position].getUrlImage()).into(holder.ivIzquierda)
+            Picasso.get().load(music[position].getUrlImage()).into(holder.ivIzquierda)
         }
     }
 }

@@ -17,44 +17,44 @@ class MainActivity : AppCompatActivity() {
 
 
             if (radioButton70.isChecked){
-                var setenta = radioButton70.text
-                mutableList1.add(setenta.toString())
+                var setenta = "70"
+                mutableList1.add(setenta)
             }
             if (radioButton80.isChecked){
-                var ochenta = radioButton80.text
+                var ochenta = "80"
                 mutableList1.add(ochenta.toString())
             }
             if (radioButton90.isChecked){
-                var noventa = radioButton90.text
-                mutableList1.add(noventa.toString())
+                var noventa = "90"
+                mutableList1.add(noventa)
             }
             if (radioButton2000.isChecked){
-                var dosmil = radioButton2000.text
-                mutableList1.add(dosmil.toString())
+                var dosmil = "2000"
+                mutableList1.add(dosmil)
             }
             if (radioButton2010.isChecked){
-                var dosmildiez = radioButton2010.text
-                mutableList1.add(dosmildiez.toString())
+                var dosmildiez = "2010"
+                mutableList1.add(dosmildiez)
             }
 
         if (radioButtonrock.isChecked){
-                var rock = radioButtonrock.text
-                mutableList.add(rock.toString())
+                var rock = "Rock"
+                mutableList.add(rock)
             }
             if (radioButtonpop.isChecked){
-                var pop = radioButtonpop.text
+                var pop = "Pop"
                 mutableList.add(pop.toString())
             }
             if (radioButtonflamenco.isChecked){
-                var flamenco = radioButtonflamenco.text
-                mutableList.add(flamenco.toString())
+                var flamenco = "Flamenco"
+                mutableList.add(flamenco)
             }
             if (radioButtonrap.isChecked){
-                var rap = radioButtonrap.text
+                var rap = "Rap"
                 mutableList.add(rap.toString())
             }
             if (radioButtonreggaeton.isChecked){
-                var reggaeton = radioButtonreggaeton.text
+                var reggaeton = "Reggaeton"
                 mutableList.add(reggaeton.toString())
             }
 
