@@ -16,10 +16,11 @@ class MainActivityViewModel  : ViewModel() {
 
     }
 
-        suspend fun getMusic(): MutableList<MusicModel> {
+        /*suspend fun getMusic(): MutableList<MusicModel> {
             delay(2000)
-            return music.filter {  }
+
         }
-    }
+    }*/
+
 
 }

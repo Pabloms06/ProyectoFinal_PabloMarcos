@@ -5,17 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.proyectofinal_pablomarcos.databinding.FilmLayoutBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.cbellmont.ejemplodescargainternet.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.MusicLayoutBinding
 import com.squareup.picasso.Picasso
 
- class MusicAdapter : RecyclerView.Adapter<MusicAdapter.FilmsViewHolder>() {
+ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>() {
 
     lateinit var binding : MusicLayoutBinding
 
-    class FilmsViewHolder(root: View, var fotobanda : ImageView, var descripcion : TextView, var anio: TextView, var cancion: TextView, var integrantes : TextView) : RecyclerView.ViewHolder(root)
+    class MusicViewHolder(root: View, var fotobanda : ImageView, var descripcion : TextView, var anio: TextView, var cancion: TextView, var integrantes : TextView) : RecyclerView.ViewHolder(root)
 
     private var music = mutableListOf<MusicModel>()
 
@@ -24,19 +23,20 @@ import com.squareup.picasso.Picasso
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
         binding = MusicLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-        return FilmsViewHolder(binding.root, binding.fotobanda, binding.descripcion, binding.anio, binding.cancion,binding.integrantes)
+        return MusicViewHolder(binding.root, binding.fotobanda, binding.descripcion, binding.anio, binding.cancion,binding.integrantes)
     }
 
     override fun getItemCount(): Int {
         return music.size
     }
 
-    override fun onBindViewHolder(holder: FilmsViewHolder, position: Int) {
-        holder.tvIntro.text = films[position].intro
-        holder.tvNombre.text = films[position].name
-        if (position > 0){
+    override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
+        holder.descripcion.text = music[position].descripcion
+        holder.cancion.text = music[position].cancion
+        Picasso.get().load(music[position].foto)
+       /* if (position > 0){
             holder.ivIzquierda.visibility = View.GONE
             holder.ivDerecha.visibility = View.VISIBLE
             Picasso.get().load(films[position].getUrlImage()).into(holder.ivDerecha)
@@ -44,6 +44,6 @@ import com.squareup.picasso.Picasso
             holder.ivIzquierda.visibility = View.VISIBLE
             holder.ivDerecha.visibility = View.GONE
             Picasso.get().load(music[position].getUrlImage()).into(holder.ivIzquierda)
-        }
+        }*/
     }
 }

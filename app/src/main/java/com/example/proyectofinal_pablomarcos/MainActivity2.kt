@@ -71,13 +71,13 @@ class MainActivity2 : AppCompatActivity() {
     private suspend fun CANCIONES(): MutableList<MusicModel> {
         // El withContext(Dispatchers.IO) -> Seguridad.
         return withContext(Dispatchers.IO) {
-            return@withContext model.getMusic()
+            return@withContext model.getResultados()
         }
     }
 
-    private suspend fun setAdapterOnMainThread(filmsList: MutableList<MusicModel>) {
+    suspend fun setAdapterOnMainThread(Music: MutableList<MusicModel>) {
         withContext(Dispatchers.Main) {
-            adapter.updateFilms(filmsList)
+            adapter.updateFilms(Music)
             pbLoading.visibility = View.GONE
         }
     }
