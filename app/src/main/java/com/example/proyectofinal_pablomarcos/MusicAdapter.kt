@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso
 
     lateinit var binding : MusicLayoutBinding
 
+
+
     class MusicViewHolder(root: View, var fotobanda : ImageView, var descripcion : TextView, var anio: TextView, var cancion: TextView, var integrantes : TextView) : RecyclerView.ViewHolder(root)
 
     private var music = mutableListOf<MusicModel>()
