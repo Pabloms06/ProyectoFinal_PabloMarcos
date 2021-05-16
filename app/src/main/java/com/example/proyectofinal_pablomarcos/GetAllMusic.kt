@@ -8,7 +8,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.*
-import okhttp3.internal.wait
 import org.json.JSONObject
 import java.io.IOException
 
@@ -20,7 +19,7 @@ class GetAllMusic {
         fun send(mainActivityMain2Binding: MainActivity2) {
 
             val client = OkHttpClient()
-            val url = "http://localhost:3000/musica"
+            val url = "http://localhost:3000/musica/"
             val request = Request.Builder()
                 .url(url)
                 .build()
@@ -50,7 +49,7 @@ class GetAllMusic {
                                 val list =
                                     gson.fromJson<List<MusicModel>>(results.toString(), itemType)
 
-                                mainActivityMain2Binding?.setAdapterOnMainThread(list as MutableList<MusicModel>)
+                                mainActivityMain2Binding?.setAdapterOnMainThread(list)
                             }
                         }
                     }

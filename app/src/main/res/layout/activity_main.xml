@@ -60,7 +60,8 @@
         app:layout_constraintEnd_toStartOf="@+id/radioButton80"
         app:layout_constraintHorizontal_bias="0.417"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decade" />
+        app:layout_constraintTop_toBottomOf="@+id/decade"
+        android:layout_marginLeft="32dp" />
 
     <RadioButton
         android:id="@+id/radioButton80"
@@ -74,7 +75,8 @@
         app:layout_constraintBottom_toTopOf="@+id/radioButton2010"
         app:layout_constraintEnd_toStartOf="@+id/radioButton90"
         app:layout_constraintTop_toBottomOf="@+id/decade"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginRight="24dp" />
 
     <RadioButton
         android:id="@+id/radioButton90"
@@ -86,7 +88,8 @@
         android:textColor="@color/black"
         android:buttonTint="@color/color"
         app:layout_constraintEnd_toStartOf="@+id/radioButton2000"
-        app:layout_constraintTop_toBottomOf="@+id/decade" />
+        app:layout_constraintTop_toBottomOf="@+id/decade"
+        android:layout_marginRight="24dp" />
 
     <RadioButton
         android:id="@+id/radioButton2000"
@@ -98,7 +101,8 @@
         android:text="2000"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decade" />
+        app:layout_constraintTop_toBottomOf="@+id/decade"
+        android:layout_marginRight="56dp" />
 
     <RadioButton
         android:id="@+id/radioButton2010"
@@ -135,7 +139,8 @@
         android:textColor="@color/black"
         android:buttonTint="@color/color"
         app:layout_constraintEnd_toStartOf="@+id/radioButtonflamenco"
-        app:layout_constraintTop_toBottomOf="@+id/genere" />
+        app:layout_constraintTop_toBottomOf="@+id/genere"
+        android:layout_marginRight="72dp" />
 
     <RadioButton
         android:id="@+id/radioButtonflamenco"
@@ -146,7 +151,8 @@
         android:text="@string/flemish"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genere" />
+        app:layout_constraintTop_toBottomOf="@+id/genere"
+        android:layout_marginRight="16dp" />
 
     <RadioButton
         android:id="@+id/radioButtonrap"
@@ -169,7 +175,8 @@
         android:buttonTint="@color/color"
         android:text="Indi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButtonpop" />
+        app:layout_constraintTop_toBottomOf="@+id/radioButtonpop"
+        android:layout_marginRight="184dp" />
 
     <Button
         android:id="@+id/send"
@@ -193,4 +200,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toEndOf="@+id/radioButtonindi" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

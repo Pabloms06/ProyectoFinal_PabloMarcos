@@ -3,8 +3,8 @@ package com.example.proyectofinal_pablomarcos
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
+import androidx.core.view.get
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -36,26 +36,26 @@ class MainActivity2 : AppCompatActivity() {
 
     }
 
-    private fun recibirdatos(){
-        val intent : Intent=intent
+    private fun recibirdatos() {
+        val intent: Intent = intent
         var mutablelist = intent.getStringArrayListExtra("lista1")
-        intent.getStringArrayListExtra("lista2")
+        var mutablelist2 = intent.getStringArrayListExtra("lista2")
+
     }
 
     private fun createRecyclerView() {
-        binding.vista.layoutManager = LinearLayoutManager (this)
+        binding.vista.layoutManager = LinearLayoutManager(this)
         binding.vista.adapter = adapter
     }
 
-    private fun descargartodas(){
+    private fun descargartodas() {
         lifecycleScope.launch {
             val list = DESCARGARTODAS()
             setAdapterOnMainThread(list)
         }
     }
 
-    private suspend fun DESCARGARTODAS() : MutableList<MusicModel>{
-        // El withContext(Dispatchers.IO) no es estrictamente necesario. Lo ponemos solo por seguridad.
+    private suspend fun DESCARGARTODAS(): MutableList<MusicModel> {
         return withContext(Dispatchers.IO) {
             return@withContext model.getResultados()
         }
@@ -69,17 +69,19 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private suspend fun CANCIONES(): MutableList<MusicModel> {
-        // El withContext(Dispatchers.IO) -> Seguridad.
         return withContext(Dispatchers.IO) {
             return@withContext model.getResultados()
         }
     }
 
-    suspend fun setAdapterOnMainThread(Music: MutableList<MusicModel>) {
+    suspend fun setAdapterOnMainThread(Music: List<MusicModel>) {
         withContext(Dispatchers.Main) {
-            adapter.updateFilms(Music)
-            pbLoading.visibility = View.GONE
+            binding.vista
+            Music.forEach {
+                descripcion.append(it.toString())
+            }
         }
+
     }
 
 }

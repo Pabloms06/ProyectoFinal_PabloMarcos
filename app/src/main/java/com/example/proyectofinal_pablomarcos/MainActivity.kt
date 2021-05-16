@@ -51,15 +51,12 @@ class MainActivity : AppCompatActivity() {
             }
             if (radioButtonrap.isChecked){
                 var rap = "Rap"
-                mutableList.add(rap.toString())
+                mutableList.add(rap)
             }
             if (radioButtonreggaeton.isChecked){
                 var reggaeton = "Reggaeton"
-                mutableList.add(reggaeton.toString())
+                mutableList.add(reggaeton)
             }
-
-
-
 
 
         boton.setOnClickListener{
@@ -69,10 +66,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-
     }
 }
+
 
 

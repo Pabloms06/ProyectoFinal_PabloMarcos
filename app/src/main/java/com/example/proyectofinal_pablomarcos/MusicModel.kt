@@ -16,7 +16,7 @@ data class MusicModel(
 {
 
     override fun toString(): String {
-        return ""
+        return "$descripcion"
     }
 
 
