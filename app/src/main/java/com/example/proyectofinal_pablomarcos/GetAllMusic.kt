@@ -16,10 +16,11 @@ class GetAllMusic {
 
     companion object {
 
-        fun send(mainActivityMain2Binding: MainActivity2) {
+        fun send(activity: MainActivity2) {
 
             val client = OkHttpClient()
-            val url = "http://localhost:3000/musica/"
+
+            val url = "https://3b6f4c62981a.ngrok.io/musica/"   //enlace generado con NGROK
             val request = Request.Builder()
                 .url(url)
                 .build()
@@ -34,7 +35,9 @@ class GetAllMusic {
 
                 override fun onResponse(call: Call, response: Response) {
                     CoroutineScope(Dispatchers.IO).launch {
-                        val bodyInString = response.body?.string()
+                        var bodyInString = response.body?.string()
+                        bodyInString = "{\"results\":$bodyInString}"
+
                         bodyInString?.let {
                             Log.w("GetAllMusic", bodyInString)
                             val JsonObject = JSONObject(bodyInString)
@@ -49,7 +52,8 @@ class GetAllMusic {
                                 val list =
                                     gson.fromJson<List<MusicModel>>(results.toString(), itemType)
 
-                                mainActivityMain2Binding?.setAdapterOnMainThread(list)
+                                Log.w("Pablo",results.toString())
+                                activity?.setAdapterOnMainThread(list)
                             }
                         }
                     }

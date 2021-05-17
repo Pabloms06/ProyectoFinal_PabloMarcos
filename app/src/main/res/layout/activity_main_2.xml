@@ -21,10 +21,11 @@
         app:layout_constraintVertical_bias="0.037"
         app:srcCompat="@mipmap/portada2" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vista"
-        android:layout_width="411dp"
-        android:layout_height="637dp"
+        android:layout_width="405dp"
+        android:layout_height="652dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

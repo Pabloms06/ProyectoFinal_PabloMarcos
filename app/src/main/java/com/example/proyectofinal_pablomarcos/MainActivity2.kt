@@ -3,6 +3,7 @@ package com.example.proyectofinal_pablomarcos
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.get
 
@@ -30,6 +31,9 @@ class MainActivity2 : AppCompatActivity() {
 
         recibirdatos()
 
+        GetAllMusic.send(this)
+        recibirdatos()
+
         model = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         descargartodas()
         createRecyclerView()
@@ -38,8 +42,8 @@ class MainActivity2 : AppCompatActivity() {
 
     private fun recibirdatos() {
         val intent: Intent = intent
-        var mutablelist = intent.getStringArrayListExtra("lista1")
-        var mutablelist2 = intent.getStringArrayListExtra("lista2")
+        var selecciondecada = intent.getStringExtra("decada")
+        var selecciongenero = intent.getStringExtra("genero")
 
     }
 
@@ -74,11 +78,18 @@ class MainActivity2 : AppCompatActivity() {
         }
     }
 
-    suspend fun setAdapterOnMainThread(Music: List<MusicModel>) {
+    suspend fun setAdapterOnMainThread(music: List<MusicModel>) {
         withContext(Dispatchers.Main) {
             binding.vista
-            Music.forEach {
-                descripcion.append(it.toString())
+            music.forEach {
+                Log.w("prueba",it.cancion)
+            }
+            Log.e("inicio","holaaaa")
+
+            var listaFiltrada = music.filter { it.decada == 80 }
+
+            listaFiltrada.forEach {
+                Log.w("prueba",it.cancion)
             }
         }
 
