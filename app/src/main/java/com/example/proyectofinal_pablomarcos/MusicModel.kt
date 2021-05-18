@@ -14,7 +14,6 @@ data class MusicModel(
     @SerializedName("cancion") var cancion : String,
     @SerializedName("integrantes")var integrantes: List<String>?)
 {
-
     override fun toString(): String {
         return "$descripcion"
     }

@@ -1,5 +1,6 @@
  package com.example.proyectofinal_pablomarcos
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,40 +13,46 @@ import com.squareup.picasso.Picasso
 
  class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>() {
 
-    lateinit var binding : MusicLayoutBinding
+     lateinit var binding: MusicLayoutBinding
 
 
+     class MusicViewHolder(root: View, var fotobanda: ImageView, var banda: TextView, var descripcion: TextView, var anio: TextView, var cancion: TextView, var integrantes: TextView) : RecyclerView.ViewHolder(root)
 
-    class MusicViewHolder(root: View, var fotobanda : ImageView, var descripcion : TextView, var anio: TextView, var cancion: TextView, var integrantes : TextView) : RecyclerView.ViewHolder(root)
+     private var music = mutableListOf<MusicModel>()
 
-    private var music = mutableListOf<MusicModel>()
+     fun updateMusic(musicList: MutableList<MusicModel>) {
+         this.music = musicList
+         notifyDataSetChanged()
+     }
 
-    fun updateFilms(filmsList: MutableList<MusicModel>) {
-        this.music = filmsList
-        notifyDataSetChanged()
-    }
+     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
+         binding = MusicLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+         return MusicViewHolder(binding.root, binding.fotobanda, binding.banda, binding.descripcion, binding.anio, binding.cancion, binding.integrantes)
+     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
-        binding = MusicLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-        return MusicViewHolder(binding.root, binding.fotobanda, binding.descripcion, binding.anio, binding.cancion,binding.integrantes)
-    }
+     override fun getItemCount(): Int {
+         return music.size
+     }
 
-    override fun getItemCount(): Int {
-        return music.size
-    }
+     override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
 
-    override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
-        holder.descripcion.text = music[position].descripcion
-        holder.cancion.text = music[position].cancion
-        Picasso.get().load(music[position].foto)
-       /* if (position > 0){
-            holder.ivIzquierda.visibility = View.GONE
-            holder.ivDerecha.visibility = View.VISIBLE
-            Picasso.get().load(films[position].getUrlImage()).into(holder.ivDerecha)
-        }  else {
-            holder.ivIzquierda.visibility = View.VISIBLE
-            holder.ivDerecha.visibility = View.GONE
-            Picasso.get().load(music[position].getUrlImage()).into(holder.ivIzquierda)
-        }*/
-    }
-}
+         var listaimagenes = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
+
+         listaimagenes.forEach {
+             Log.d("imagen", it.foto)
+             Picasso.get().load(listaimagenes[position].foto)
+         }
+
+         for (num in listaimagenes.indices) {
+             holder.fotobanda.setImageResource(num)
+         }
+
+
+         holder.banda.text = listaimagenes[position].banda
+         holder.descripcion.text = listaimagenes[position].descripcion
+         holder.anio.text = listaimagenes[position].anio
+         holder.cancion.text = listaimagenes[position].cancion
+         holder.integrantes.text = listaimagenes[position].integrantes.toString()
+
+     }
+ }

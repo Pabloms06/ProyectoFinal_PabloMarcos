@@ -86,7 +86,7 @@ class MainActivity2 : AppCompatActivity() {
             }
             Log.e("inicio","holaaaa")
 
-            var listaFiltrada = music.filter { it.decada == 80 }
+            var listaFiltrada = music.filter { it.genero == "Rock" }
 
             listaFiltrada.forEach {
                 Log.w("prueba",it.cancion)
