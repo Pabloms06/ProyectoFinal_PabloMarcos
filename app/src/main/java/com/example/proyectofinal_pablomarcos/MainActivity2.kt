@@ -89,7 +89,7 @@ class MainActivity2 : AppCompatActivity() {
 
             //Separador
 
-
+/*
 
             music.forEach {
                 Log.w("prueba",it.descripcion)
@@ -147,7 +147,7 @@ class MainActivity2 : AppCompatActivity() {
 
             listaFiltrada5.forEach {
                 Log.w("Integrantes",it.integrantes.toString())
-            }
+            }*/
         }
 
 
