@@ -14,6 +14,7 @@ import com.cbellmont.ejemplodescargainternet.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.ActivityMain2Binding
 import kotlinx.android.synthetic.main.activity_main_2.*
 import kotlinx.android.synthetic.main.music_layout.*
+import kotlinx.android.synthetic.main.music_layout.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -65,33 +66,92 @@ class MainActivity2 : AppCompatActivity() {
         }
     }
 
-    private fun DESCARGARCANCIONES() {
-        lifecycleScope.launch {
-            val list = CANCIONES()
-            setAdapterOnMainThread(list)
-        }
-    }
-
-    private suspend fun CANCIONES(): MutableList<MusicModel> {
-        return withContext(Dispatchers.IO) {
-            return@withContext model.getResultados()
-        }
-    }
-
-    suspend fun setAdapterOnMainThread(music: List<MusicModel>) {
+    suspend fun setAdapterOnMainThread(music: MutableList<MusicModel>) {
         withContext(Dispatchers.Main) {
+            adapter.updateMusic(music)
+            pbLoading.visibility = View.GONE
+
             binding.vista
             music.forEach {
-                Log.w("prueba",it.cancion)
+                Log.w("Banda",it.banda)
             }
             Log.e("inicio","holaaaa")
 
-            var listaFiltrada = music.filter { it.genero == "Rock" }
+            var listaFiltrada1 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
 
-            listaFiltrada.forEach {
+            listaFiltrada1.forEach {
+
+                //Log.w("Banda",it.banda)
+                var bandalista = it.banda
+                banda.text = bandalista
+            }
+
+
+            //Separador
+
+
+
+            music.forEach {
+                Log.w("prueba",it.descripcion)
+            }
+            Log.e("Descripcion","Descripcion")
+
+             var listaFiltrada2 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
+
+            listaFiltrada2.forEach {
+                Log.w("Descripcion",it.descripcion)
+            }
+
+            //Separador
+
+
+            music.forEach {
+                Log.w("prueba",it.anio)
+            }
+            Log.e("Año","Año")
+
+
+            var listaFiltrada3 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
+
+            listaFiltrada3.forEach {
+                Log.w("Año",it.anio)
+            }
+
+            //Separador
+
+
+
+            music.forEach {
                 Log.w("prueba",it.cancion)
             }
+            Log.e("Cancion","Cancion")
+
+
+            var listaFiltrada4 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
+
+
+            listaFiltrada4.forEach {
+                Log.w("Cancion",it.cancion)
+            }
+
+            //Separador
+
+
+
+            music.forEach {
+                Log.w("prueba",it.integrantes.toString())
+            }
+            Log.e("Integrantes","Integrantes")
+
+            var listaFiltrada5 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
+
+            listaFiltrada5.forEach {
+                Log.w("Integrantes",it.integrantes.toString())
+            }
         }
+
+
+
 
     }
 

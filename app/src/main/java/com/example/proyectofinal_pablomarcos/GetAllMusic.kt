@@ -20,7 +20,7 @@ class GetAllMusic {
 
             val client = OkHttpClient()
 
-            val url = "https://06c70f4a2b9e.ngrok.io/musica/"   //enlace generado con NGROK
+            val url = "https://22cefb335ac4.ngrok.io/musica/"   //enlace generado con NGROK
             val request = Request.Builder()
                 .url(url)
                 .build()
@@ -53,7 +53,7 @@ class GetAllMusic {
                                     gson.fromJson<List<MusicModel>>(results.toString(), itemType)
 
                                 Log.w("Pablo",results.toString())
-                                activity?.setAdapterOnMainThread(list)
+                                activity?.setAdapterOnMainThread(list as MutableList<MusicModel>)
                             }
                         }
                     }

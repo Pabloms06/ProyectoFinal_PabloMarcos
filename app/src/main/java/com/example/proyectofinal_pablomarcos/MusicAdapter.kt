@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cbellmont.ejemplodescargainternet.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.MusicLayoutBinding
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.music_layout.*
 
  class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>() {
 
@@ -36,6 +37,21 @@ import com.squareup.picasso.Picasso
 
      override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
 
+         music.forEach {
+             Log.w("Banda",it.banda)
+         }
+         Log.e("inicio","holaaaa")
+
+         var listaFiltrada1 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
+
+         listaFiltrada1.forEach {
+
+             //Log.w("Banda",it.banda)
+             var bandalista = it.banda
+             holder.banda.text = bandalista
+         }
+
+/*
          var listaimagenes = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
 
          listaimagenes.forEach {
@@ -52,7 +68,7 @@ import com.squareup.picasso.Picasso
          holder.descripcion.text = listaimagenes[position].descripcion
          holder.anio.text = listaimagenes[position].anio
          holder.cancion.text = listaimagenes[position].cancion
-         holder.integrantes.text = listaimagenes[position].integrantes.toString()
+         holder.integrantes.text = listaimagenes[position].integrantes.toString()*/
 
      }
  }

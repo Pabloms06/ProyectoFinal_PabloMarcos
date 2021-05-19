@@ -17,7 +17,7 @@ class MainActivityViewModel  : ViewModel() {
 
     suspend fun getResultados(): MutableList<MusicModel> {
         delay(2000)
-        return music /*.filter { } as MutableList<MusicModel>*/
+        return music
 
     }
 

@@ -4,4 +4,9 @@
     <string name="decade">"Seleccione decada: "</string>
     <string name="genere">Seleccione genero:</string>
     <string name="flemish">Flamenco</string>
+    <string name="banda" >Banda:</string>
+    <string name="description" >Descripción:</string>
+    <string name="year" >Año:</string>
+    <string name="song" >Mejor canción:</string>
+    <string name="inte" >Integrantes:</string>
 </resources>
