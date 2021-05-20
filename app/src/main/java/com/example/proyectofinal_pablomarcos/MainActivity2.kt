@@ -71,21 +71,6 @@ class MainActivity2 : AppCompatActivity() {
             adapter.updateMusic(music)
             pbLoading.visibility = View.GONE
 
-            binding.vista
-            music.forEach {
-                Log.w("Banda",it.banda)
-            }
-            Log.e("inicio","holaaaa")
-
-            var listaFiltrada1 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
-
-            listaFiltrada1.forEach {
-
-                //Log.w("Banda",it.banda)
-                var bandalista = it.banda
-                banda.text = bandalista
-            }
-
 
             //Separador
 

@@ -37,38 +37,77 @@ import kotlinx.android.synthetic.main.music_layout.*
 
      override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
 
-         music.forEach {
-             Log.w("Banda",it.banda)
+            /*music.forEach {
+                 Log.w("Banda",it.banda)
+             }
+             Log.e("inicio","holaaaa")*/
+
+             var listFiltrate1 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
+
+
+             listFiltrate1.forEach {
+
+                 Log.w("Banda",it.banda)
+                 //var bandalista = it.banda
+                 //holder.banda.text = bandalista
+             }
+
+             //**********************
+
+             listFiltrate1.forEach {
+
+                 Log.w("Descripcion",it.banda)
+                 //var desc = it.descripcion
+                 //holder.descripcion.text = desc
+             }
+
+             //*******************
+
+             listFiltrate1.forEach {
+
+             Log.w("Integrantes",it.banda)
+             //var integranteslista = it.integrantes.toString()
+             //holder.integrantes.text = integranteslista
+             }
+
+             //***********************
+
+             listFiltrate1.forEach {
+
+                 Log.w("Cancion",it.banda)
+                 //var song = it.cancion
+                 //holder.cancion.text = song
+             }
+
+             //**********************
+
+            listFiltrate1.forEach {
+
+             Log.w("Año",it.banda)
+             //var anio = it.anio
+             //holder.anio.text = anio
          }
-         Log.e("inicio","holaaaa")
 
-         var listaFiltrada1 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
+             /*
+             var listaimagenes = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
 
-         listaFiltrada1.forEach {
+              listaimagenes.forEach {
+                  Log.d("imagen", it.foto)
+                  Picasso.get().load(listaimagenes[position].foto)
+              }
 
-             //Log.w("Banda",it.banda)
-             var bandalista = it.banda
-             holder.banda.text = bandalista
+              for (num in listaimagenes.indices) {
+                  holder.fotobanda.setImageResource(num)
+              }
+
+
+              holder.banda.text = listaimagenes[position].banda
+              holder.descripcion.text = listaimagenes[position].descripcion
+              holder.anio.text = listaimagenes[position].anio
+              holder.cancion.text = listaimagenes[position].cancion
+              holder.integrantes.text = listaimagenes[position].integrantes.toString()
+
+              */
+
          }
-
-/*
-         var listaimagenes = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
-
-         listaimagenes.forEach {
-             Log.d("imagen", it.foto)
-             Picasso.get().load(listaimagenes[position].foto)
-         }
-
-         for (num in listaimagenes.indices) {
-             holder.fotobanda.setImageResource(num)
-         }
-
-
-         holder.banda.text = listaimagenes[position].banda
-         holder.descripcion.text = listaimagenes[position].descripcion
-         holder.anio.text = listaimagenes[position].anio
-         holder.cancion.text = listaimagenes[position].cancion
-         holder.integrantes.text = listaimagenes[position].integrantes.toString()*/
-
-     }
  }
