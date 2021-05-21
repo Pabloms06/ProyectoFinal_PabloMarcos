@@ -1,12 +1,11 @@
-package com.cbellmont.ejemplodescargainternet
+package com.example.proyectofinal_pablomarcos
 
 import com.google.gson.annotations.SerializedName
-
 data class MusicModel(
 
     @SerializedName("id")var Id : String,
     @SerializedName("decada")var decada: Int,
-    @SerializedName("genero") val genero : String,
+    @SerializedName("genero") var genero : String,
     @SerializedName("banda")  var banda : String,
     @SerializedName("foto") var foto : String,
     @SerializedName("descripcion") var descripcion : String,

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.cbellmont.ejemplodescargainternet.MusicModel
+import com.example.proyectofinal_pablomarcos.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.MusicLayoutBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.music_layout.*
