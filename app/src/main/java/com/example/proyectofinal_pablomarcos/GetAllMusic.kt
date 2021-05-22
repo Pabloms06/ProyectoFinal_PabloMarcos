@@ -1,7 +1,6 @@
 package com.example.proyectofinal_pablomarcos
 
 import android.util.Log
-import com.cbellmont.ejemplodescargainternet.MusicModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.CoroutineScope
@@ -20,7 +19,7 @@ class GetAllMusic {
 
             val client = OkHttpClient()
 
-            val url = "https://a690c507a5ee.ngrok.io/musica/"   //enlace generado con NGROK
+            val url = "https://4e75e6fcac49.ngrok.io/musica/"   //enlace generado con NGROK
             val request = Request.Builder()
                 .url(url)
                 .build()

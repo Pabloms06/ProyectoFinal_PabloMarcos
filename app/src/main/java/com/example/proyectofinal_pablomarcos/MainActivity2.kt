@@ -10,7 +10,7 @@ import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cbellmont.ejemplodescargainternet.MusicModel
+import com.example.proyectofinal_pablomarcos.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.ActivityMain2Binding
 import kotlinx.android.synthetic.main.activity_main_2.*
 import kotlinx.android.synthetic.main.music_layout.*
@@ -74,7 +74,7 @@ class MainActivity2 : AppCompatActivity() {
 
             //Separador
 
-/*
+
 
             music.forEach {
                 Log.w("prueba",it.descripcion)
@@ -132,7 +132,7 @@ class MainActivity2 : AppCompatActivity() {
 
             listaFiltrada5.forEach {
                 Log.w("Integrantes",it.integrantes.toString())
-            }*/
+            }
         }
 
 

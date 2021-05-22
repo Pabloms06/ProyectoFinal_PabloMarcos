@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.cbellmont.ejemplodescargainternet.MusicModel
+import com.example.proyectofinal_pablomarcos.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.ActivityMain2Binding
 import kotlinx.coroutines.delay
 import okhttp3.internal.filterList

@@ -11,13 +11,14 @@ import com.example.proyectofinal_pablomarcos.MusicModel
 import com.example.proyectofinal_pablomarcos.databinding.MusicLayoutBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.music_layout.*
+import org.w3c.dom.Text
 
  class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>() {
 
      lateinit var binding: MusicLayoutBinding
 
 
-     class MusicViewHolder(root: View, var fotobanda: ImageView, var banda: TextView, var descripcion: TextView, var anio: TextView, var cancion: TextView, var integrantes: TextView) : RecyclerView.ViewHolder(root)
+     class MusicViewHolder(root: View, var fotobanda: ImageView, var banda: TextView, var descripcion: TextView, var anio: TextView, var cancion: TextView, var integrantes: TextView ) : RecyclerView.ViewHolder(root)
 
      private var music = mutableListOf<MusicModel>()
 
@@ -47,45 +48,44 @@ import kotlinx.android.synthetic.main.music_layout.*
 
              listFiltrate1.forEach {
 
-                 Log.w("Banda",it.banda)
-                 //var bandalista = it.banda
-                 //holder.banda.text = bandalista
+                // Log.w("Banda",it.banda)
+                 var bandalista = it.banda
+                 holder.banda.text = bandalista
              }
-
              //**********************
 
              listFiltrate1.forEach {
 
-                 Log.w("Descripcion",it.banda)
-                 //var desc = it.descripcion
-                 //holder.descripcion.text = desc
+                // Log.w("Descripcion",it.banda)
+                 var desc = it.descripcion
+                 holder.descripcion.text = desc
              }
 
              //*******************
 
              listFiltrate1.forEach {
 
-             Log.w("Integrantes",it.banda)
-             //var integranteslista = it.integrantes.toString()
-             //holder.integrantes.text = integranteslista
+           //  Log.w("Integrantes",it.banda)
+             var integranteslista = it.integrantes.toString()
+             holder.integrantes.text = integranteslista.toString()
              }
 
              //***********************
 
              listFiltrate1.forEach {
 
-                 Log.w("Cancion",it.banda)
-                 //var song = it.cancion
-                 //holder.cancion.text = song
+                 //Log.w("Cancion",it.banda)
+                 var song = it.cancion
+                 holder.cancion.text = song
              }
 
              //**********************
 
             listFiltrate1.forEach {
 
-             Log.w("Año",it.banda)
-             //var anio = it.anio
-             //holder.anio.text = anio
+            // Log.w("Año",it.banda)
+             var anio= it.anio
+             holder.anio.text = anio
          }
 
              /*

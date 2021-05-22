@@ -17,39 +17,39 @@ class MainActivity : AppCompatActivity() {
         var selecciongenero = ""
 
             if (radioButton70.isChecked){
-                var selecciondecada = "70"
+               selecciondecada = "70"
             }
             if (radioButton80.isChecked){
-                var selecciondecada = "80"
+                selecciondecada = "80"
             }
             if (radioButton90.isChecked){
-                var selecciondecada  = "90"
+                selecciondecada  = "90"
             }
             if (radioButton2000.isChecked){
-                var selecciondecada  = "2000"
+                selecciondecada  = "2000"
             }
             if (radioButton2010.isChecked){
-                var selecciondecada  = "2010"
+                selecciondecada  = "2010"
             }
 
 
             if (radioButtonrock.isChecked){
-                var selecciongenero = "Rock"
+                selecciongenero = "Rock"
             }
             if (radioButtonpop.isChecked){
-                var selecciongenero = "Pop"
+                selecciongenero = "Pop"
             }
             if (radioButtonflamenco.isChecked){
-                var selecciongenero = "Flamenco"
+                selecciongenero = "Flamenco"
             }
             if (radioButtonrap.isChecked){
-                var selecciongenero = "Rap"
+                selecciongenero = "Rap"
             }
             if (radioButtonindi.isChecked){
-                var selecciongenero= "Rock"
+                selecciongenero= "Rock"
             }
             if (radioButtonreggaeton.isChecked){
-                var selecciongenero = "Reggaeton"
+                selecciongenero = "Reggaeton"
             }
 
 
