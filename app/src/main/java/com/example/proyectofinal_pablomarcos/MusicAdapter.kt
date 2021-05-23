@@ -46,6 +46,12 @@ import org.w3c.dom.Text
              var listFiltrate1 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
 
 
+            listFiltrate1.forEach{
+                var foto = it.foto
+                Picasso.get().load(foto).into(holder.fotobanda)
+            }
+
+
              listFiltrate1.forEach {
 
                 // Log.w("Banda",it.banda)
