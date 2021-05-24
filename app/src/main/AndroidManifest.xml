@@ -14,13 +14,14 @@
         android:usesCleartextTraffic="true"
         >
 
-        <activity android:name=".MainActivity" android:theme="@style/SplashTheme">
+        <activity android:name=".MainPrincipal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity2"/>
     </application>
 </manifest>
