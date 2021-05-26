@@ -22,8 +22,12 @@ import kotlinx.coroutines.withContext
 
 class MainActivity2 : AppCompatActivity() {
     private var adapter: MusicAdapter = MusicAdapter()
-    private lateinit var model: MainActivityViewModel
+    //private lateinit var model: MainActivityViewModel
     private lateinit var binding: ActivityMain2Binding
+
+
+    private var selecciondecada = ""
+    private var selecciongenero = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +37,22 @@ class MainActivity2 : AppCompatActivity() {
         recibirdatos()
 
         GetAllMusic.send(this)
-        recibirdatos()
 
-        model = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-        descargartodas()
         createRecyclerView()
 
     }
 
     private fun recibirdatos() {
         val intent: Intent = intent
-        var selecciondecada = intent.getStringExtra("decada")
-        var selecciongenero = intent.getStringExtra("genero")
+        var selecciondecadanull = intent.getStringExtra("decada")
+        var selecciongeneronull = intent.getStringExtra("genero")
+        Log.d("Recibir datos", "selecciondecadanull = $selecciondecadanull")
+        selecciondecadanull?.let {
+            selecciondecada = it
+        }
+        selecciongeneronull?.let {
+            selecciongenero = it
+        }
 
     }
 
@@ -53,52 +61,32 @@ class MainActivity2 : AppCompatActivity() {
         binding.vista.adapter = adapter
     }
 
-    private fun descargartodas() {
-        lifecycleScope.launch {
-            val list = DESCARGARTODAS()
-            setAdapterOnMainThread(list)
-        }
-    }
-
-    private suspend fun DESCARGARTODAS(): MutableList<MusicModel> {
-        return withContext(Dispatchers.IO) {
-            return@withContext model.getResultados()
-        }
-    }
-
     suspend fun setAdapterOnMainThread(music: MutableList<MusicModel>) {
+
+
+       // Log.e("selecciongenero = ", selecciongenero)
+       // Log.e("selecciondecada = ", selecciondecada)
         withContext(Dispatchers.Main) {
-            adapter.updateMusic(music)
+
+
+            //val listaFiltrada1 = music.filter { it.genero == selecciongenero }.filter { it.decada == selecciondecada.toInt() }
+
+            val listaFiltrada1 = music.filter { it.genero == "Flamenco" }.filter { it.decada == 80 }
+
+
+            Log.d("Lista filtrada",listaFiltrada1.toString())
+            listaFiltrada1.forEach {
+                Log.e("genero", it.genero)
+            }
+            //Log.w("ListaFiltrada",listaFiltrada1.toString())
+            //Log.e("Seleccion genero",selecciongenero.toString())
+            adapter.updateMusic(listaFiltrada1.toMutableList())
+
             pbLoading.visibility = View.GONE
 
 
-            var listaFiltrada1 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
-
-            listaFiltrada1.forEach {
-                Log.w("Banda",it.banda)
-            }
-
-
-            listaFiltrada1.forEach {
-                Log.w("Descripción",it.descripcion)
-            }
-
-
-            listaFiltrada1.forEach {
-                Log.w("Cancion",it.cancion)
-            }
-
-
-            listaFiltrada1.forEach {
-                Log.w("Integrantes",it.integrantes.toString())
-            }
-
-
-            listaFiltrada1.forEach {
-                Log.w("Año",it.anio)
-            }
-
         }
+
     }
 
 }

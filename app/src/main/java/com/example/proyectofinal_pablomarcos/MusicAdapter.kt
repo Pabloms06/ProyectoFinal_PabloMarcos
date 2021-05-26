@@ -33,70 +33,31 @@ import org.w3c.dom.Text
      }
 
      override fun getItemCount(): Int {
-         return listFiltrate1.size
+         return music.size
      }
 
-     var listFiltrate1 = music.filter { it.genero == "Rock" }.filter { it.decada == 90 }
 
      override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
 
 
-         listFiltrate1.forEach {
-             //Log.d("imagen", it.foto)
-             Picasso.get().load(listFiltrate1[position].foto)
+         music.forEach {
+
+             Picasso.get().load(music[position].foto).into(holder.fotobanda)
+             holder.banda.text = music[position].banda
+             holder.descripcion.text = music[position].descripcion
+             holder.cancion.text = music[position].cancion
+             holder.anio.text = music[position].anio
+             holder.integrantes.text = music[position].integrantes.toString()
          }
 
-         listFiltrate1.forEach {
-
-             //Log.w("Banda",it.banda)
-             var bandalista = it.banda
-             holder.banda.text = bandalista
-         }
-         //**********************
-
-         listFiltrate1.forEach {
-             //Log.w("Descripcion",it.descripcion)
-             var desc = it.descripcion
-             holder.descripcion.text = desc
-         }
-
-         //*******************
-
-         listFiltrate1.forEach {
-
-             //Log.w("Integrantes",it.integrantes.toString())
-             var integranteslista = it.integrantes.toString()
-             holder.integrantes.text = integranteslista.toString()
-         }
-
-         //***********************
-
-         listFiltrate1.forEach {
-
-             Log.w("Cancion",it.cancion)
-             var song = it.cancion
-             holder.cancion.text = song
-         }
-
-         //**********************
-
-         listFiltrate1.forEach {
-
-             Log.w("Año",it.anio)
-             var anio= it.anio
-             holder.anio.text = anio
-         }
-
-
-
-/*
-
-         holder.banda.text = listFiltrate1[position].banda
-         holder.descripcion.text = listFiltrate1[position].descripcion
-         holder.anio.text = listFiltrate1[position].anio
-         holder.cancion.text = listFiltrate1[position].cancion
-         holder.integrantes.text = listFiltrate1[position].integrantes.toString()
-*/
      }
+
+     //Log.d("imagen", it.foto)
+
+     /*holder.banda.text = it.banda
+     holder.descripcion.text = it.descripcion
+     holder.integrantes.text = it.integrantes.toString()
+     holder.cancion.text = it.cancion
+     holder.anio.text = it.anio*/
 
  }
