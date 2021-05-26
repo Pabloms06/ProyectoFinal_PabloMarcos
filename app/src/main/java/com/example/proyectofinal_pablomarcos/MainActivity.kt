@@ -1,5 +1,6 @@
 package com.example.proyectofinal_pablomarcos
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -14,23 +15,23 @@ class MainActivity : AppCompatActivity() {
 
         val boton = findViewById<Button>(R.id.send)
 
-        var selecciondecada = ""
+        var selecciondecada = 0
         var selecciongenero = ""
 
             if (radioButton70.isChecked){
-               selecciondecada = "70"
+               selecciondecada = 70
             }
             if (radioButton80.isChecked){
-                selecciondecada = "80"
+                selecciondecada = 80
             }
             if (radioButton90.isChecked){
-                selecciondecada  = "90"
+                selecciondecada  = 90
             }
             if (radioButton2000.isChecked){
-                selecciondecada  = "2000"
+                selecciondecada  = 2000
             }
             if (radioButton2010.isChecked){
-                selecciondecada  = "2010"
+                selecciondecada  = 2010
             }
 
 

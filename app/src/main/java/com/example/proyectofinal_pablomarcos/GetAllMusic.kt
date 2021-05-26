@@ -19,7 +19,7 @@ class GetAllMusic {
 
             val client = OkHttpClient()
 
-            val url = "https://4ce5a1addedb.ngrok.io/musica/"   //enlace generado con NGROK
+            val url = "https://2c224e10611b.ngrok.io/musica/"   //enlace generado con NGROK
             val request = Request.Builder()
                 .url(url)
                 .build()

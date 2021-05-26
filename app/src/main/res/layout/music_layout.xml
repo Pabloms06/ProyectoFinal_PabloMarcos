@@ -56,9 +56,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/anio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.694"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/descripcion" />
+        app:layout_constraintTop_toBottomOf="@+id/descripcion"
+        app:layout_constraintVertical_bias="0.133" />
 
     <TextView
         android:id="@+id/anio"
@@ -93,28 +94,28 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/integrantes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/cancion"
-        android:layout_width="160dp"
-        android:layout_height="22dp"
+        android:layout_width="227dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="24dp"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/integrantes"
         android:layout_width="300dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="4dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
