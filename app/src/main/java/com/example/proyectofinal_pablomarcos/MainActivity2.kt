@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
 
 
 class MainActivity2 : AppCompatActivity() {
-    private var adapter: MusicAdapter = MusicAdapter()
+    private var adapter: Resultados = Resultados()
     private lateinit var binding: ActivityMain2Binding
 
 
@@ -58,7 +58,7 @@ class MainActivity2 : AppCompatActivity() {
         withContext(Dispatchers.Main) {
 
 
-            val listaFiltrada1 = music.filter { it.genero == "Flamenco" }.filter { it.decada == 70 }
+            val listaFiltrada1 = music.filter { it.genero == "Rock" }.filter { it.decada == 80 }
 
 
             Log.d("Lista filtrada",listaFiltrada1.toString())

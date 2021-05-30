@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal_pablomarcos.databinding.MusicLayoutBinding
 import com.squareup.picasso.Picasso
 
- class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>() {
+ class Resultados : RecyclerView.Adapter<Resultados.MusicViewHolder>() {
 
      lateinit var binding: MusicLayoutBinding
 

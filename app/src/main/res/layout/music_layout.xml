@@ -63,8 +63,8 @@
 
     <TextView
         android:id="@+id/anio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="37dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/cancion"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,9 +110,9 @@
 
     <TextView
         android:id="@+id/integrantes"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
