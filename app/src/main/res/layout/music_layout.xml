@@ -63,11 +63,13 @@
 
     <TextView
         android:id="@+id/anio"
-        android:layout_width="30dp"
-        android:layout_height="37dp"
+        android:layout_width="45dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/cancion"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toEndOf="@+id/cancion" />
 
     <TextView

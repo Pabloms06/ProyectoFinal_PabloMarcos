@@ -16,7 +16,6 @@ class MainActivity2 : AppCompatActivity() {
     private var adapter: Resultados = Resultados()
     private lateinit var binding: ActivityMain2Binding
 
-
     private var selecciondecada = 0
     private var selecciongenero = ""
 
@@ -25,25 +24,18 @@ class MainActivity2 : AppCompatActivity() {
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recibirdatos()
+        var bundle = intent.extras
+
+        selecciongenero= bundle?.getString("genero").toString()
+        selecciondecada= bundle?.getInt("decada")!!
+
+
+        Log.e("Genero =", selecciondecada.toString())
+        Log.e("Decada =", selecciondecada.toString())
 
         GetAllMusic.send(this)
 
         createRecyclerView()
-
-    }
-
-    private fun recibirdatos() {
-        val intent: Intent = intent
-        selecciondecada = intent.getIntExtra("decada",selecciondecada)
-        selecciongenero = intent.getStringExtra("decada").toString()
-       // Log.d("Recibir datos", "selecciondecadanull = $selecciondecadanull")
-       /* selecciondecadanull?.let {
-            selecciondecada = it
-        }
-        selecciongeneronull?.let {
-            selecciongenero = it
-        }*/
 
     }
 
@@ -58,7 +50,7 @@ class MainActivity2 : AppCompatActivity() {
         withContext(Dispatchers.Main) {
 
 
-            val listaFiltrada1 = music.filter { it.genero == "Rock" }.filter { it.decada == 80 }
+            val listaFiltrada1 = music.filter { it.genero == selecciongenero }.filter { it.decada == selecciondecada }
 
 
             Log.d("Lista filtrada",listaFiltrada1.toString())

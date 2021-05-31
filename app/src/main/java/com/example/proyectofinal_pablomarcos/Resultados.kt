@@ -47,6 +47,7 @@ import com.squareup.picasso.Picasso
              holder.integrantes.text = music[position].integrantes.toString()
 
          }
+         
 
      }
 
