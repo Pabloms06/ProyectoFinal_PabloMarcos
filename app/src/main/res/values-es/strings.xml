@@ -9,4 +9,5 @@
     <string name="year" >Año:</string>
     <string name="song" >Mejor canción:</string>
     <string name="inte" >Integrantes:</string>
+    <string name="selected" >Has seleccionado: </string>
 </resources>

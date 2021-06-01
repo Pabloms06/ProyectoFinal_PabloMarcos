@@ -29,10 +29,6 @@ class MainActivity2 : AppCompatActivity() {
         selecciongenero= bundle?.getString("genero").toString()
         selecciondecada= bundle?.getInt("decada")!!
 
-
-        Log.e("Genero =", selecciondecada.toString())
-        Log.e("Decada =", selecciondecada.toString())
-
         GetAllMusic.send(this)
 
         createRecyclerView()

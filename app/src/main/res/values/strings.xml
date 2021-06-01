@@ -3,10 +3,11 @@
     <string name="send">Send</string>
     <string name="decade">Select decade:</string>
     <string name="genere">Select genere:</string>
-    <string name="flemish">Flemish</string>
+    <string name="flemish">Flamenco</string>
     <string name="banda" >Band:</string>
     <string name="description" >Description:</string>
     <string name="year" >Year:</string>
     <string name="song" >Best song:</string>
     <string name="inte" >Members:</string>
+    <string name="selected" >You have selected: </string>
 </resources>
