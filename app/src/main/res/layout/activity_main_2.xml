@@ -45,5 +45,18 @@
         app:layout_constraintStart_toStartOf="@+id/vista"
         app:layout_constraintTop_toTopOf="@+id/vista" />
 
+    <TextView
+        android:id="@+id/vacio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textStyle="italic"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/vista" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,13 +53,13 @@ class MainActivity2 : AppCompatActivity() {
             listaFiltrada1.forEach {
                 Log.e("genero", it.genero)
             }
-            //Log.w("ListaFiltrada",listaFiltrada1.toString())
-            //Log.e("Seleccion genero",selecciongenero.toString())
             adapter.updateMusic(listaFiltrada1.toMutableList())
 
             pbLoading.visibility = View.GONE
 
-
+            if (listaFiltrada1.isEmpty()){
+                vacio.text = "No se han encontrado resultados! :("
+            }
         }
 
     }
